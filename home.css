@@ -1,0 +1,51 @@
+html {
+        background: url("http://www.jonathanmierisch.slccwebdev.com/pictures/newhomepagear.jpg"); 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+
+#h1 {
+font-family: 'Chango', cursive;
+color: #6cebf7;
+background-color:#39224f ;
+background-repeat: no-repeat;
+background-size: 400px 100px;
+width: 300px;
+border: 5px solid #0a767f;
+padding: 50px;
+margin: 20px;
+}
+
+.homepagenav {
+    font-family: 'Chango', cursive;
+    color: #6cebf7;
+    background-color:#39224f ;
+    background-repeat: no-repeat;
+    background-size: 400px 100px;
+    width: 200px;
+    border: 5px solid #0a767f;
+    padding: 10px;
+    margin: 20px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    font-family: 'Chango', cursive;
+    color: #39224f;
+    text-underline-position: below;
+  }
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+#content-wrap {
+    padding-bottom: 2.5rem; 
+  }
