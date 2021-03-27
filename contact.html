@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" href="http://jonathanmierisch.slccwebdev.com/CSS/contact.css" type="text/css">
+
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
+ 
+<hr/> 
+</head>
+<header>
+
+    <div id="mainnav" style="text-align: center;">
+        <nav>
+            <h1><strong><i><b><u>Navigate My Page</u></b></i></strong></h1>
+                        <a href="home.html" title="Home Page"
+                        class="navtext"><b>Home</b></a>
+                        <a href="portfolio.html" title="Portfolio
+                        Page"class="navtext"><b>Portfolio</b></a>
+                        <a href="about.html" title="About
+                        Me!"class="navtext"><b>About</b></a>
+                        <a href="contact.html" title="Contact
+                        Me"class="navtext"><b>Contact Me</b></a>
+        </nav>
+
+</header>
+
+<body>
+
+<div id="page-container">
+<div id="content-wrap">
+
+<form action="http://form-test.slccwebdev.com/form-success.php" method="get">
+<p><b><u>Have questions? Reach out to me here!</u></b></p><br/>
+<label for="name"><b>Name</b></label><br/>
+<input type="text" name="name" autofocus><br/>
+<br/>
+<label for="email"><b>Email</b></label><br/>
+<input type="text" name="email" required autofocus><br/>
+<br/>
+
+<label for="questions"><b>Questions</b></label><br/>
+<textarea name="questions" form="usrform" col="5" rows="10" maxlength="350">Ask
+Away!</textarea><br/>
+<br/>
+
+<input type="submit" value="submit" autofocus>
+
+</form>
+<hr/>
+
+<!--Radio Check Boxes-->
+<p>Want me to Reach Out to You?</p>
+
+<form action="http://form-test.slccwebdev.com/form-success.php" method="get">
+<div class="radiocheckboxes">
+<input
+type="radio"
+id="yes"
+name="contact-back"
+value="Yes" autofocus>
+<label for="yes">Yes</label>
+</div>
+
+<div class="radiocheckboxes">
+    <input
+    type="radio"
+    id="no"
+    name="contact-back"
+    value="No" autofocus>
+    <label for="no">No</label>
+    </div>
+
+<!--Normnal Check Boxes-->
+
+<p>Select the best way to contact you.</p>
+
+
+<div class="checkboxes">
+    <input
+    type="checkbox"
+    id="contactphone"
+    name="contact-phone"
+    value="Phone">
+    <label for="contactphone" autofocus>Phone</label>
+    </div>
+
+    <div class="checkboxes">
+        <input
+        type="checkbox"
+        id="contacttext"
+        name="contact-text"
+        value="Text" autofocus>
+        <label for="contacttext">Text</label>
+        </div>
+
+        <div class="checkboxes">
+            <input
+            type="checkbox"
+            id="contactemail"
+            name="contact-email"
+            value="Email">
+            <label for="contactemail" autofocus>Email</label>
+            </div>
+            <br/>
+
+            <input type="submit" value="submit" autofocus>
+
+        </form>
+</body>
+
+<footer>
+    <p>Author: Jonthan Mierisch</p>
+    <p><a href="mailto:mierischjonathan@yahoo.com">mierischjonathan@yahoo.com</a></p>
+  </footer>
+</div>
+</html>
