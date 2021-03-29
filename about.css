@@ -54,6 +54,9 @@ body {
       align-content: left;
     }
 
+    a:hover {
+      color: red;
+    }
   
 section {
 background-color: #39224f;
