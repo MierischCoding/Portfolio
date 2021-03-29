@@ -26,7 +26,7 @@ body {
       right: 150px;
       width: 180px;
       height: 210px;
-
+      align-items: right;
     }
 
     .navtext {
@@ -51,6 +51,7 @@ body {
       border-width: thick;
       background-color:#39224f;
       background-size: 1000px 1000px;
+      align-content: left;
     }
 
   
@@ -62,6 +63,7 @@ border: 10px solid 	#0a767f;
 padding: 0px;
 margin: 20px;
 max-width: 70%;
+align-content: left;
 }
 
 #clicktoview {
