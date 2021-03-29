@@ -1,7 +1,7 @@
 body {
 background-color:#39224f;
-overflow: auto;
 }
+
 
 #mainnav {
   font-family: 'Pacifico', cursive;
@@ -12,7 +12,7 @@ overflow: auto;
    width: 90%;
    border: 10px solid #0a767f;
    padding: 10px;
-   margin: 20px;
+   margin: auto;
    font-size: 20px;
 }
 
@@ -37,23 +37,24 @@ background-color: #045158;
 margin-left: auto;
 margin-right: auto;
 border: 5px solid #0a767f;
-width: 90%;
+width: auto;
 height:300px;
 }
 
 
 #portphoto {
-    display: block;  
-    margin-left: auto;
-    margin-right: auto;
-    border-style: solid;
-    border-top-color: aqua;
-    border-bottom-color: aqua;
-    border-left-color: rgba(252, 23, 7, 0.712);
-    border-right-color: rgba(252, 23, 7, 0.712);
-    border-width: thick;
-    background-color: 	#6cebf7;
-    background-size: 800px 1500px;
+  display: block;  
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-top-color: aqua;
+  border-bottom-color: aqua;
+  border-left-color: rgba(252, 23, 7, 0.712);
+  border-right-color: rgba(252, 23, 7, 0.712);
+  border-width: thick;
+  background-color:#39224f;
+  background-size: 1000px 1000px;
+  align-content: left;
   }
 
   #footer {
@@ -64,14 +65,4 @@ height:300px;
     font-family: 'Chango', cursive;
     color: #6cebf7;
     text-underline-position: below;
-  }
-
-#page-container {
-    position: relative;
-    min-height: 100vh;
-  }
-
-#content-wrap {
-    padding-bottom: 2.5rem; 
-    width: 800px;
   }
