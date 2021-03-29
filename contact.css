@@ -1,6 +1,7 @@
 html {
 background-color:	#0a767f;
 overflow: auto;
+align-items: center;
 }
 
 #mainnav {
@@ -24,12 +25,14 @@ overflow: auto;
  padding: 20px;
  margin: 30px;
  font-size: 40px;
+ align-items: center;
 }
 
 p {
     font-family: 'Chango', cursive;
     color: #39224f;
     text-underline-position: below;
+    align-items: center;
 }
 
 #footer {
