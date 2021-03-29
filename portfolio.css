@@ -41,6 +41,9 @@ width: auto;
 height:300px;
 }
 
+a:hover {
+  color: red;
+}
 
 #portphoto {
   display: block;  
