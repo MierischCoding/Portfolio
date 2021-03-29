@@ -35,6 +35,10 @@ p {
     align-items: center;
 }
 
+a:hover {
+  color: red;
+}
+
 #footer {
     position: absolute;
     bottom: 0;
