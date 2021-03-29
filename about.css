@@ -66,6 +66,10 @@ max-width: 70%;
 align-content: left;
 }
 
+.dates {
+display: inline;
+}
+
 #clicktoview {
     background-color: #39224f;
     color:	#6cebf7;
