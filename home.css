@@ -43,6 +43,10 @@ align-items: left;
     text-underline-position: below;
   }
 
+  a:hover {
+    color: red;
+  }
+
 #page-container {
     position: relative;
     min-height: 100vh;
