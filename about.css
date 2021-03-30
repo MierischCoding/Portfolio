@@ -22,11 +22,13 @@ body {
       background-color:	#39224f;
       border: 5px solid #0a767f;
       position: fixed;
-      position: right;
       right: 150px;
       width: 180px;
-      height: 210px;
+      height: 300px;
       align-items: right;
+      font-size: 20px;
+      position: right;
+      display: flexbox;
     }
 
     .navtext {
@@ -67,6 +69,7 @@ padding: 0px;
 margin: 20px;
 max-width: 70%;
 align-content: left;
+display: flexbox;
 }
 
 .dates {
