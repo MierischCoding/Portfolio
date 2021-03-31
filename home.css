@@ -7,30 +7,15 @@ html {
         overflow: auto;
 }
 
-
-#h1 {
-font-family: 'Chango', cursive;
-color: #6cebf7;
-background-color:#39224f ;
-background-repeat: no-repeat;
-background-size: 400px 100px;
-width: 300px;
-border: 5px solid #0a767f;
-padding: 50px;
-margin: 20px;
-align-items: left;
-}
-
 .intro {
 background-color: #39224f;
 color:	#6cebf7;
-width: auto;
 border: 10px solid 	#0a767f;
 padding: 10px;
 margin: 20px;
 max-width: 70%;
-align-content: center;
 font-size: 20px;
+width: 20%;
 }
 
 .homepagenav {
