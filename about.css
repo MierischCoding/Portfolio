@@ -72,10 +72,6 @@ align-content: left;
 display: flexbox;
 }
 
-.dates {
-display: inline;
-}
-
 #clicktoview {
     background-color: #39224f;
     color:	#6cebf7;
