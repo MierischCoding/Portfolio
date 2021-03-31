@@ -21,6 +21,18 @@ margin: 20px;
 align-items: left;
 }
 
+.intro {
+background-color: #39224f;
+color:	#6cebf7;
+width: auto;
+border: 10px solid 	#0a767f;
+padding: 10px;
+margin: 20px;
+max-width: 70%;
+align-content: center;
+font-size: 20px;
+}
+
 .homepagenav {
     font-family: 'Chango', cursive;
     color: #6cebf7;
