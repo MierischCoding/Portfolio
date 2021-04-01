@@ -29,6 +29,7 @@ body {
       font-size: 20px;
       position: right;
       display: flexbox;
+      top: 600px;
     }
 
     .navtext {
