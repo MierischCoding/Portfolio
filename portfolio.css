@@ -2,6 +2,10 @@ body {
 background-color:#39224f;
 }
 
+a {
+border: 10px;
+border-color: red;
+}
 
 #mainnav {
   font-family: 'Pacifico', cursive;
@@ -23,7 +27,7 @@ background-color:#39224f;
  display: inline-block;
  padding: 20px;
  margin: 30px;
- font-size: 40px;
+ font-size: 30px;
 }
 
 li {
@@ -31,6 +35,7 @@ color:	#6cebf7;
 }
 
 #portable {
+position: relative;
 font-size: 20px;
 color: 	#6cebf7;
 background-color: #045158;
@@ -39,6 +44,7 @@ margin-right: auto;
 border: 5px solid #0a767f;
 width: auto;
 height:300px;
+top: 10px;
 }
 
 a:hover {
