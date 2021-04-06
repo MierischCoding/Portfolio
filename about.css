@@ -1,98 +1,3 @@
-body {
-    background-color: #6cebf7;
-    overflow:auto;
-    }
-    
-    #mainnav {
-       font-family: 'Pacifico', cursive;
-        color: #6cebf7;
-        background-color:#39224f ;
-        background-repeat: no-repeat;
-        background-size: 400px 100px;
-        width: 90%;
-        border: 10px solid #0a767f;
-        padding: 10px;
-        margin: 20px;
-        font-size: 20px;
-    }
-
-    #pagenav {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      color: 	#6cebf7;
-      background-color:	#39224f;
-      border: 5px solid #0a767f;
-      position: fixed;
-      right: 150px;
-      width: 180px;
-      height: 300px;
-      align-items: right;
-      font-size: 20px;
-      position: right;
-      display: flexbox;
-      top: 600px;
-    }
-
-    .navtext {
-      font-family: 'Pacifico', cursive;
-      text-size-adjust: 56px;
-      line-height: 1em;
-      display: inline-block;
-      padding: 20px;
-      margin: 30px;
-      font-size: 40px;
-    }
-
-    #aboutmephoto {
-      display: block;  
-      margin-left: auto;
-      margin-right: auto;
-      border-style: solid;
-      border-top-color: aqua;
-      border-bottom-color: aqua;
-      border-left-color: rgba(252, 23, 7, 0.712);
-      border-right-color: rgba(252, 23, 7, 0.712);
-      border-width: thick;
-      background-color:#39224f;
-      background-size: 1000px 1000px;
-      align-content: left;
-    }
-
-    a:hover {
-      color: red;
-    }
-  
-section {
-background-color: #39224f;
-color:	#6cebf7;
-width: auto;
-border: 10px solid 	#0a767f;
-padding: 0px;
-margin: 20px;
-max-width: 70%;
-align-content: left;
-display: flexbox;
-}
-
-#clicktoview {
-    background-color: #39224f;
-    color:	#6cebf7;
-    width: 90%;
-    border: 10px solid 	#0a767f;
-    padding: 10px;
-    margin: 20px;
-    max-width: 69%;
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  font-family: 'Chango', cursive;
-  color: #39224f;
-  text-underline-position: below;
-}
-
 #page-container {
   position: relative;
   min-height: 100vh;
@@ -100,4 +5,11 @@ display: flexbox;
 
 #content-wrap {
   padding-bottom: 2.5rem; 
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;  
 }
