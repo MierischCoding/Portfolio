@@ -34,19 +34,8 @@ rel="stylesheet">
   <link rel="stylesheet" href="http://www.jonathanmierisch.slccwebdev.com/CSS/home.css">
 
    <!--JS Scripts Here-->
-
-   <script>
-    var yourName = prompt("Greetings! Please enter your name so we can get to know each other!");
-
-    if (yourName != null) {
-    document.getElementById("name").innerHTML = "Hello " + yourName + "," + " please use the link below to explore my Portfolio";
-    } else {
-      alert("Please enter a valid name.");
-    }
-    </script>
-    
+   
     <title>Home Page</title>
-
 </head>
 
 <body>
@@ -80,11 +69,18 @@ rel="stylesheet">
 Development. This is my first website! Please click the link below to find out more about me.</p>
 
 <h3 id="name"></h3>
+<script>
+    var yourName = prompt("Greetings! Please enter your name so we can get to know each other!");
+    if (yourName != null) {
+    document.getElementById("name").innerHTML = "Hello " + yourName + "," + " please use the link below to explore my Portfolio";
+    } else {
+    alert("Please enter a valid name.");
+    }
+    </script>
 <br>
 <a href="about.html" class="btn btn-light">Find Out More!</a>
  <br>
 <br>
-
 </div>
     </div>
         </div>
