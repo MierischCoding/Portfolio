@@ -68,15 +68,15 @@ rel="stylesheet">
 <p class="font-weight-light" class="btn btn-primary btn-lg mt-3 bg-white">I am a current student at SLCC interested in starting a career in Web
 Development. This is my first website! Please click the link below to find out more about me.</p>
 
-<h3 id="name"></h3>
+<h3 id="x"></h3>
 <script>
-    var yourName = prompt("Greetings! Please enter your name so we can get to know each other!");
-    if (yourName != null) {
-    document.getElementById("name").innerHTML = "Hello " + yourName + "," + " please use the link below to explore my Portfolio";
-    } else {
-    alert("Please enter a valid name.");
-    }
-    </script>
+var x;
+x = prompt("Welcome! Please enter your name so we can get to know each other.")
+alert("Welcome "+x+" thank you for visiting my page!")
+document.getElementById("x").innerHTML = "Hello " + x + "," + " please use the link below to explore my Portfolio";
+</script>
+
+
 <a href="about.html" class="btn btn-light">Find Out More!</a>
  <br>
 <br>
