@@ -9,4 +9,6 @@ if (hourNow > 18) {greeting = "Good evening "+ name + " thank you for visiting m
 else if (hourNow > 12) {greeting = "Good afternoon "+ name + " thank you for visiting my page!";}
 else {greeting ="Good morning "+ name + " thank you for visiting my page!";}
 
-alert(greeting)
+alert(greeting);
+
+document.getElementById("Greeting") = "Hello " + name + "," + " please use the link below to explore my Portfolio";
