@@ -1,4 +1,12 @@
-var x;
-x = prompt("Welcome! Please enter your name so we can get to know each other.")
-alert("Welcome "+x+" thank you for visiting my page!")
-document.getElementById("x").innerHTML = "Hello " + x + "," + " please use the link below to explore my Portfolio";
+var name;
+var today = new Date();
+var hourNow = today.getHours();
+var greeting;
+
+name = prompt("Welcome! Please enter your name so we can get to know each other.");
+
+if (hourNow > 18) {greeting = "Good evening "+ name + " thank you for visiting my page!";}
+else if (hourNow > 12) {greeting = "Good afternoon "+ name + " thank you for visiting my page!";}
+else {greeting ="Good morning "+ name + " thank you for visiting my page!";}
+
+alert(greeting)
