@@ -9,5 +9,3 @@ else if (hourNow > 12) {greeting = "Good afternoon "+ name + " thank you for vis
 else {greeting ="Good morning "+ name + " thank you for visiting my page!";}
 
 alert(greeting);
-
-document.getElementById("Greeting").innerHTML = "Hello " + name + "," + " please use the link below to explore my Portfolio";
