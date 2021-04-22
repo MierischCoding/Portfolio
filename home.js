@@ -10,4 +10,4 @@ else {greeting ="Good morning "+ name + " thank you for visiting my page!";}
 
 alert(greeting);
 
-document.getElementById("Greeting").innerHTML = "Hello " + "+name+" + "," + " please use the link below to explore my Portfolio";
+document.getElementById("Greeting").innerHTML = "Hello " + name + "," + " please use the link below to explore my Portfolio";
