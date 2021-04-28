@@ -22,7 +22,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="jonathanmierisch.slccwebdev.com/CSS/contact.css">
+<link rel="stylesheet" href="contact.css">
 
   <!--Google Font Links Here-->
 
@@ -36,6 +36,7 @@ rel="stylesheet">
 <link rel="stylesheet" href="http://www.jonathanmierisch.slccwebdev.com/CSS/contact.css">
 
  <!--JS Scripts Here-->
+ <script href="contact.js"></script>
 
     <title>Contact Me</title>
 </head>
@@ -111,6 +112,34 @@ rel="stylesheet">
     </div>
     <button class="btn btn-primary mb-2 " type="submit"
     role="button">Submit</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    </section
+
+    <section id="contact">
+        <div class="container my-5">
+    
+        <div class="row justify-content-center text-center">
+        <div class="col-md-6">
+        <h2 class="display-4 font-weight-bold">See below my favorite flavors of ice cream!</h2>
+        <hr />
+        </div>
+        </div>
+        <h2>See below for my favorite flavors of Ice Cream (to demonstrate a JS loop):</h2>
+
+        <p id="demo"></p>
+        
+        <script>
+        var cars = ["Chocolate", "Vanilla", "Rocky Road", "Birthday Cake", "Peanut Butter", "Mint Chocolate Chip"];
+        var text = "";
+        var i;
+        for (i = 0; i < cars.length; i++) {
+          text += cars[i] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+        </script>
     </form>
     </div>
     </div>
