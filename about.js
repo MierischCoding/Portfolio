@@ -61,3 +61,14 @@ randomBtn.addEventListener("click", function() {
   currentItem = Math.floor(Math.random() * references.length);
   showPerson(currentItem);
 });
+
+//Hide & Show Experience
+$("#showhide").hide();
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("#showhide").hide();
+  });
+  $("#show").click(function(){
+    $("#showhide").show();
+  });
+});
