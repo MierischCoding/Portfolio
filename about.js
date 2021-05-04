@@ -72,3 +72,8 @@ $(document).ready(function(){
     $("#showhide").show();
   });
 });
+
+//I've Seen Enough
+$("#btn3").click(function(){
+  $("#showhide").hide();
+});
