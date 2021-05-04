@@ -34,10 +34,6 @@ rel="stylesheet">
   <!--CSS Link(s) Here-->
 
 <link rel="stylesheet" href="http://www.jonathanmierisch.slccwebdev.com/CSS/contact.css">
-
- <!--JS Scripts Here-->
- <script href="contact.js"></script>
-
     <title>Contact Me</title>
 </head>
 
@@ -116,10 +112,42 @@ rel="stylesheet">
     </div>
     </div>
     </div>
-    </section
+</section>
 
+<div class="word">
+    <span>T</span>
+    <span>H</span>
+    <span>A</span>
+    <span>N</span>
+    <span>K</span>
+    <BR>
+    <span>Y</span>
+    <span>O</span>
+    <span>U</span>
+    <span>!</span>
+    <p>click me :)</p>
+</div>
 
 </body>
+
+ <!--JS Scripts Here-->
+ <script>
+const spans = document.querySelectorAll('.word span');
+
+spans.forEach((span, idx) => {
+	span.addEventListener('click', (e) => {
+		e.target.classList.add('active');
+	});
+	span.addEventListener('animationend', (e) => {
+		e.target.classList.remove('active');
+	});
+	
+	// Initial animation
+	setTimeout(() => {
+		span.classList.add('active');
+	}, 750 * (idx+1))
+});
+</script>
 
 <footer class="py-4 bg-dark" id="footer">
     <div class="container">
