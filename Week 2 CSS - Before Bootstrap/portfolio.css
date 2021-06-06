@@ -7,7 +7,7 @@ border: 10px;
 border-color: red;
 }
 
-#mainnav {
+.navbar {
   font-family: 'Pacifico', cursive;
    color: #6cebf7;
    background-color:#39224f ;
@@ -20,7 +20,7 @@ border-color: red;
    font-size: 20px;
 }
 
-.navtext {
+.nav-link {
  font-family: 'Pacifico', cursive;
  text-size-adjust: 56px;
  line-height: 1em;
