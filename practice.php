@@ -48,8 +48,8 @@ type="text/css">
 
 <header>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a href="http://www.jonathanmierisch.slccwebdev.com/home.php" class="navbar-brand">Home</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a href="jonathanmierisch.slccwebdev.com/home.html" class="navbar-brand">Home</a>
         <img src="http://www.jonathanmierisch.slccwebdev.com/pictures/aboutme.jpg" alt="Logo" height="25" id="aboutimg">
         <ul class="navbar-nav">
             <button class="navbar-toggler" data-toggle="collapse"
@@ -58,8 +58,8 @@ type="text/css">
             area-expanded="false"
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navContent">
-            <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/about.php" title="AboutMe"class="nav-link">About Me</a></li>
-            <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/contact.php" title="ContactMe"class="nav-link">Contact Me</a></li>
+            <li class="navbar-item"><a href="jonathanmierisch.slccwebdev.com/about.html" title="AboutMe"class="nav-link">About Me</a></li>
+            <li class="navbar-item"><a href="jonathanmierisch.slccwebdev.com/contact.html" title="ContactMe"class="nav-link">Contact Me</a></li>
             <li class="navbar-item"><a href=http://www.jonathanmierisch.slccwebdev.com/PHP/practice.php" title="PHP"class="nav-link">PHP Practice Page</a></li>
           </div>
         </ul>
@@ -70,35 +70,60 @@ type="text/css">
 
 <?php
 
-#Task 1 assignment 1
+#Task 1 Assignment 1:
 echo "Hello World!";
 
-#Task 2 assignment 1
+#Task 2 Assignment 1:
 $greeting = "Hello World!";
 echo "<br> <br>";
 echo $greeting;
 echo "<br> <br>";
 
-#Task 3 assignment 1
+#Task 3 Assignment 1:
 $varOne = 1;
 $varTwo = 2;
 $totalSum = $varOne + $varTwo;
 echo $totalSum;
 echo "<br> <br>";
 
-#Task 4 assignment 1
+#Task 4 Assignment 1:
 $varThree = 5;
 $varFour = 6;
 $totalSum2 = $varThree * $varFour;
 echo $totalSum2;
 echo "<br> <br>";
 
-#Task 5 assignment 1
+#Task 5 Assignment 1:
 $varFive = 15;
 $varSix = 30;
 $totalSum3 = $varFive % $varSix;
 echo $totalSum3;
 echo "<br> <br>";
+echo "<hr>";
+echo "<br>";
+?>
+
+<?php
+
+#Task 1 Assignment 2:
+$mySkills = array("HTML", "CSS", "JavaScript", "PHP/MySQL", "WordPress");
+
+echo 'My skills include: ' . $mySkills[0] . ", " . $mySkills[1] . ", " . $mySkills[2] . ", " . $mySkills[3] . ", " . $mySkills[4];
+
+echo "<br> <br>";
+
+#Task 2 Assignment 2:
+$mySkills = array("HTML" => "4", "CSS" => "4", "JavaScript" => "4", "PHP/MySQL" => "6", "WordPress" => "4");
+
+echo "My skills include: <br>";
+    foreach ($mySkills as $s => $v) {
+      echo $s++ .  ": " . $v++ . " " . "weeks long <br>";
+    }
+
+
+echo "<br> <br>";
+
+#Task 3 Assignment 2 -- Need tutor help, this does not make sense.
 
 ?>
 
