@@ -117,14 +117,29 @@ $mySkills = array("HTML" => "4", "CSS" => "4", "JavaScript" => "4", "PHP/MySQL" 
 
 echo "My skills include: <br>";
     foreach ($mySkills as $s => $v) {
+        echo "<ul>";
       echo $s++ .  ": " . $v++ . " " . "weeks long <br>";
+      echo "</ul>";
     }
 
 
 echo "<br> <br>";
 
-#Task 3 Assignment 2 -- Need tutor help, this does not make sense.
+#Task 3 Assignment 2:
+$mySkills = array("HTML", "CSS", "JavaScript", "PHP/MySQL", "WordPress");
+function newList($array){
+  echo "<ul>";
+  foreach($array as $value){
+    echo "<li>$value</li>";
+  }
+  echo "</ul>";
+}
+  echo "My skills include:";
+  newList($mySkills);
 
+
+
+echo "<br> <br>";
 ?>
 
 </body>
