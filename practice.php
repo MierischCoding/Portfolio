@@ -138,8 +138,9 @@ function newList($array){
   newList($mySkills);
 
 
-
-echo "<br> <br>";
+  echo "<br> <br>";
+  echo "<hr>";
+  echo "<br>";
 ?>
 
 </body>
