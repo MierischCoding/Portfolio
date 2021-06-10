@@ -118,7 +118,7 @@ $mySkills = array("HTML" => "4", "CSS" => "4", "JavaScript" => "4", "PHP/MySQL" 
 echo "My skills include: <br>";
     foreach ($mySkills as $s => $v) {
       echo "<ul>";
-      echo "<li>" . $s++ .  ": " . $v++ . " " . "weeks long </li> <br>";
+      echo "<li>" . $s++ .  ": " . $v++ . " " . "weeks long </li>";
       echo "</ul>";
     }
 
