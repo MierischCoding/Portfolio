@@ -38,6 +38,57 @@ rel="stylesheet">
 </head>
 
 <body>
+    <?php
+    #week 3 assignment for creating a protected form
+    $nameErr = $emailErr = $contBackErr = "";
+    $name = $email = $contBack = $comment = "";
+    $formErr = false;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $contBack = $POST["contact-back"];
+        $comment = $_POST["comments"];
+    } 
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = cleanInput($_POST["name"]);
+        $email = cleanInput ($_POST["email"]);
+        $contBack = cleanInput ($POST["contact-back"]);
+        $comment = cleanInput ($_POST["comments"]);
+    } 
+
+    if (empty($_POST["name"])) {
+        $nameErr = "Name is required.";
+        $formErr = true;
+    } else {
+        $name = cleanInput($_POST["name"]);
+        if (preg_match("/^[a-zA-Z ]*$/", $name)){
+            $nameErr = "Only letters and standard spaces allowed.";
+            $formErr = true;
+        }
+    }
+    
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required.";
+        $formErr = true;
+    } else {
+        $email = cleanInput($_POST["email"]);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Please enter a valid email address.";
+            $formErr = true;
+        }
+    }
+
+    if (empty($_POST["contact-back"])) {
+        $contBackErr = "Please let us know if we can contact you back.";
+        $formErr = true;
+    } else {
+        $contBackErr = cleanInput($_POST["contact-back"]);
+    }
+
+    
+    ?>
 
     <div id="page-container">
     <div id="content-wrap">
@@ -60,9 +111,10 @@ rel="stylesheet">
           </div>
         </ul>
     </nav>
+
     </header>
 
-    <section id="contact">
+         <section id="contact">
         <div class="container my-5">
     
         <div class="row justify-content-center text-center">
@@ -72,48 +124,61 @@ rel="stylesheet">
         </div>
         </div>
 
+        <!-- Name Field -->
         <div class="row justify-content-center">
         <div class="col-6">
-        <form action="http://form-test.slccwebdev.com/formsuccess.php" method="POST">
         <div class="form-group" required>
         <label for="name">Full Name:</label>
+        <span class="text-danger">*<?php echo $namErr; ?></span>
         <input type="text" class="form-control" id="name"
-        placeholder="Full Name" name="name" />
+        placeholder="Full Name" name="name" value="<?php if (isset($name)) {echo $name;} ?>"/>
         </div>
+
+        <!-- Email Field -->
         <div class="form-group">
-        <label for="email" required>Email address:</label>
+        <label for="email" required >Email address:</label>
+        <span class="text-danger">*<?php echo $emailErr; ?></span>
         <input type="email" class="form-control"
         id="email" placeholder="name@example.com"
-        name="email" />
+        name="email" value="<?php if (isset($email)) {echo $email;} ?>"/>
         </div>
+
+        <!-- Contact Field -->
         <div class="form-group">
         <label class="control-label">Can we contact you
         back?</label>
+        <span class="text-danger">*<?php echo $contBackErr; ?></span>
         <div class="form-check">
         <input type="radio" class="form-checkinput" name="contact-back" id="yes"
-        value="Yes" checked />
+        value="Yes" <?php if ((isset($contBack)) && ($contBack == "Yes")) {echo "checked";} ?>/>
         <label class="form-check-label"
         for="yes">Yes</label>
         </div>
         <div class="form-check">
         <input type="radio" class="form-checkinput" name="contact-back" id="no"
-        value="No" />
+        value="No" <?php if ((isset($contBack)) && ($contBack == "No")) {echo "checked";} ?>/>
         <label class="form-check-label"for="no">No</label>
     </div>
     </div>
 
+    <!-- Comments Field -->
     <div class="form-group">
         <label for="comments">Comments:</label>
     <textarea id="comments" class="form-control"
-    rows="3" name="comments"></textarea>
+    rows="3" name="comments"><?php if (isset($comment)) {echo $comment;} ?>Enter text here...</textarea>
     </div>
+
+     <!-- Required Field Note -->
+     <div class="text-danger text-right">* Indicates required fields</div>
+
+    <!-- Submit Button -->
     <button class="btn btn-primary mb-2 " type="submit"
     role="button">Submit</button>
     </form>
     </div>
     </div>
     </div>
-</section>
+    </section>
 
 <div class="word">
     <span>T</span>
@@ -128,6 +193,41 @@ rel="stylesheet">
     <span>!</span>
     <p>&#128515;</p>
 </div>
+
+<?php if (($_SERVER["REQUEST_METHOD"] == "POST") && (!($formErr))) { ?>
+
+<section id="results" style="background-color: lightsteelblue;">
+		<div class="container py-2" >
+			<div class="row ">
+				<h1>Form Entries:</h1>
+			</div>
+			<div class="row">				
+				<ul>
+					<?php 
+				if ($name !== "") {echo "<li>NAME: $name </li>";}
+				if ($email !== "")	{echo "<li>EMAIL: $email </li>";}
+				if ($contBack !== "")	{echo "<li>CONTACT BACK: $contBack </li>";}
+				if ($comment !== "")	{echo "<li>COMMENT: $comment </li>";}
+					?>
+				</ul>		
+			</div>
+		</div>
+	</section>
+    
+<?php } ?>
+
+
+<?php
+#cleanInputFilter
+function cleanInput ($data){
+$data = trim($data);
+$data = stripslashes($data);
+$data = htmlspecialchars($data);
+return $data;
+}
+
+
+?>
 
 </body>
 
