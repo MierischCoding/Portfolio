@@ -39,6 +39,26 @@ rel="stylesheet">
 
 <body>
 
+<header>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<a href="http://www.jonathanmierisch.slccwebdev.com/PHP/home.php" class="navbar-brand">Home</a>
+		<img src="http://www.jonathanmierisch.slccwebdev.com/pictures/aboutme.jpg" alt="Logo" height="25" id="aboutimg">
+		<ul class="navbar-nav">
+			<button class="navbar-toggler" data-toggle="collapse"
+			data-target="#navContent"
+			aria-controls="navContent"
+			area-expanded="false"
+			aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="navContent">
+			<li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/about.php" title="AboutMe"class="nav-link">About Me</a></li>
+			<li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/contact.php" title="ContactMe"class="nav-link">Contact Me</a></li>
+			<li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/practice.php" title="PHP"class="nav-link">PHP Practice Page</a></li>
+		  </div>
+		</ul>
+	</nav>
+</header>
+
 <?php
 		$nameErr = $emailErr = $contBackErr = "";
 		$name = $email = $contBack = $comment = "";
@@ -208,13 +228,5 @@ spans.forEach((span, idx) => {
 	}, 750 * (idx+1))
 });
 </script>
-
-<footer class="py-4 bg-dark" id="footer">
-    <div class="container">
-    <p class="m-0 text-center text-white">
-    Copyright &copy; Jonathan Mierisch 2021
-    </p>
-    </div>
-    </footer>
 </div>
 </html>
