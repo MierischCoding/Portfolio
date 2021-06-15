@@ -38,147 +38,141 @@ rel="stylesheet">
 </head>
 
 <body>
-    <?php
-    #week 3 assignment for creating a protected form
-    $nameErr = $emailErr = $contBackErr = "";
-    $name = $email = $contBack = $comment = "";
-    $formErr = false;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $contBack = $POST["contact-back"];
-        $comment = $_POST["comments"];
-    } 
-     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = cleanInput($_POST["name"]);
-        $email = cleanInput ($_POST["email"]);
-        $contBack = cleanInput ($POST["contact-back"]);
-        $comment = cleanInput ($_POST["comments"]);
-    } 
+<?php
+		$nameErr = $emailErr = $contBackErr = "";
+		$name = $email = $contBack = $comment = "";
+		$formErr = false;
 
-    if (empty($_POST["name"])) {
-        $nameErr = "Name is required.";
-        $formErr = true;
-    } else {
-        $name = cleanInput($_POST["name"]);
-        if (preg_match("/^[a-zA-Z ]*$/", $name)){
-            $nameErr = "Only letters and standard spaces allowed.";
-            $formErr = true;
-        }
-    }
-    
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required.";
-        $formErr = true;
-    } else {
-        $email = cleanInput($_POST["email"]);
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			
+			if (empty($_POST["name"])) {
+				$nameErr = "Name is required.";
+				$formErr = true;
+			} else {
+				$name = cleanInput($_POST["name"]);
+				//Use REGEX to accept only letters and white spaces
+				if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+					$nameErr = "Only letters and standard spaces allowed.";
+					$formErr = true;
+				}
+			}
+			
+			if (empty($_POST["email"])) {
+				$emailErr = "Email is required.";
+				$formErr = true;
+			} else {
+				$email = cleanInput($_POST["email"]);
+				// Check if e-mail address is formatted correctly
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					$emailErr = "Please enter a valid email address.";
+					$formErr = true;
+				}
+			}
+			
+			if (empty($_POST["contact-back"])) {
+				$contBackErr = "Please let us know if we can contact you back.";
+				$formErr = true;
+			} else {
+				$contBack = cleanInput($_POST["contact-back"]);
+			}
+			
+			$comment = cleanInput($_POST["comments"]);
+		}
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Please enter a valid email address.";
-            $formErr = true;
-        }
-    }
+		function cleanInput($data) {
+			$data = trim($data);
+			$data = stripslashes($data);
+			$data = htmlspecialchars($data);
+			return $data;
+		}
+	?>
 
-    if (empty($_POST["contact-back"])) {
-        $contBackErr = "Please let us know if we can contact you back.";
-        $formErr = true;
-    } else {
-        $contBackErr = cleanInput($_POST["contact-back"]);
-    }
+	<!-- Contact Form Section -->
+	<section id="contact">
+		<div class="container py-5">
+			<!-- Section Title -->
+			<div class="row justify-content-center text-center">
+				<div class="col-md-6">
+					<h2 class="display-4 font-weight-bold">Contact Me</h2>
+					<hr />
+				</div>
+			</div>
+			<!-- Contact Form Row -->
+			<div class="row justify-content-center">
+				<div class="col-6">
+				
+					<!-- Contact Form Start -->
+					<form action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST" novalidate>
+						
+						<!-- Name Field -->
+						<div class="form-group">
+							<label for="name">Full Name:</label>
+							<span class="text-danger">*<?php echo $nameErr; ?></span>
+							<input type="text" class="form-control" id="name" placeholder="Full Name" name="name" value="<?php if(isset($name)) {echo $name;}?>"" />
+							
+						</div>
+						
+						<!-- Email Field -->
+						<div class="form-group">
+							<label for="email">Email address:</label>
+							<span class="text-danger">*<?php echo $emailErr; ?></span>
+							<input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" value="<?php if(isset($email)) {echo $email;} ?>" />
+						</div>
+						
+						<!-- Radio Button Field -->
+						<div class="form-group">
+							<label class="control-label">Can we contact you back?</label>
+							<span class="text-danger">*<?php echo $contBackErr; ?></span>
+							<div class="form-check">
+								<input type="radio" class="form-check-input" name="contact-back" id="yes" value="Yes"  <?php if ((isset($contBack)) && ($contBack == "Yes")) {echo "checked";}?>/>
+								<label class="form-check-label" for="yes" >Yes</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" class="form-check-input" name="contact-back" id="no" value="No" <?php if ((isset($contBack)) && ($contBack == "No")) {echo "checked";}?>/>
+								<label class="form-check-label" for="no" >No</label>
+							</div>
+						</div>
+						
+						<!-- Comments Field -->
+						<div class="form-group">
+							<label for="comments">Comments:</label>
+							<textarea id="comments" class="form-control" rows="3" name="comments"><?php if (isset($comment)) {echo $comment;} ?></textarea>
+						</div>
 
-    
-    ?>
-
-    <div id="page-container">
-    <div id="content-wrap">
-
-    <header>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a href="http://www.jonathanmierisch.slccwebdev.com/PHP/home.php" class="navbar-brand">Home</a>
-        <img src="http://www.jonathanmierisch.slccwebdev.com/pictures/aboutme.jpg" alt="Logo" height="25" id="aboutimg">
-        <ul class="navbar-nav">
-            <button class="navbar-toggler" data-toggle="collapse"
-            data-target="#navContent"
-            aria-controls="navContent"
-            area-expanded="false"
-            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navContent">
-            <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/about.php" title="AboutMe"class="nav-link">About Me</a></li>
-            <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/contact.php" title="ContactMe"class="nav-link">Contact Me</a></li>
-            <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/practice.php" title="PHP"class="nav-link">PHP Practice Page</a></li>
-          </div>
-        </ul>
-    </nav>
-
-    </header>
-
-         <section id="contact">
-        <div class="container my-5">
-    
-        <div class="row justify-content-center text-center">
-        <div class="col-md-6">
-        <h2 class="display-4 font-weight-bold">Contact Me</h2>
-        <hr />
-        </div>
-        </div>
-
-        <!-- Name Field -->
-        <div class="row justify-content-center">
-        <div class="col-6">
-        <div class="form-group" required>
-        <label for="name">Full Name:</label>
-        <span class="text-danger">*<?php echo $namErr; ?></span>
-        <input type="text" class="form-control" id="name"
-        placeholder="Full Name" name="name" value="<?php if (isset($name)) {echo $name;} ?>"/>
-        </div>
-
-        <!-- Email Field -->
-        <div class="form-group">
-        <label for="email" required >Email address:</label>
-        <span class="text-danger">*<?php echo $emailErr; ?></span>
-        <input type="email" class="form-control"
-        id="email" placeholder="name@example.com"
-        name="email" value="<?php if (isset($email)) {echo $email;} ?>"/>
-        </div>
-
-        <!-- Contact Field -->
-        <div class="form-group">
-        <label class="control-label">Can we contact you
-        back?</label>
-        <span class="text-danger">*<?php echo $contBackErr; ?></span>
-        <div class="form-check">
-        <input type="radio" class="form-checkinput" name="contact-back" id="yes"
-        value="Yes" <?php if ((isset($contBack)) && ($contBack == "Yes")) {echo "checked";} ?>/>
-        <label class="form-check-label"
-        for="yes">Yes</label>
-        </div>
-        <div class="form-check">
-        <input type="radio" class="form-checkinput" name="contact-back" id="no"
-        value="No" <?php if ((isset($contBack)) && ($contBack == "No")) {echo "checked";} ?>/>
-        <label class="form-check-label"for="no">No</label>
-    </div>
-    </div>
-
-    <!-- Comments Field -->
-    <div class="form-group">
-        <label for="comments">Comments:</label>
-    <textarea id="comments" class="form-control"
-    rows="3" name="comments"><?php if (isset($comment)) {echo $comment;} ?>Enter text here...</textarea>
-    </div>
-
-     <!-- Required Field Note -->
-     <div class="text-danger text-right">* Indicates required fields</div>
-
-    <!-- Submit Button -->
-    <button class="btn btn-primary mb-2 " type="submit"
-    role="button">Submit</button>
-    </form>
-    </div>
-    </div>
-    </div>
-    </section>
+						<!-- Required Fields Note-->
+						<div class="text-danger text-right">* Indicates required fields</div>
+						
+						<!-- Submit Button -->
+						<button class="btn btn-primary mb-2" type="submit" role="button" name="submit">Submit</button>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<?php if (($_SERVER["REQUEST_METHOD"] == "POST") && (!($formErr))) { ?>
+	
+	<section id="results" style="background-color: lightsteelblue;">
+		<div class="container py-2" >
+			<div class="row ">
+				<h1>Form Entries:</h1>
+			</div>
+			<div class="row">				
+				<ul>
+					<?php
+					if ($name !== "") { echo "<li>NAME: $name </li>"; } 
+					if ($email !== "") { echo "<li>EMAIL: $email </li>"; }
+					if ($contBack !== "") { echo "<li>CONTACT BACK: $contBack </li>"; }
+					if ($comment !== "") { echo "<li>COMMENT: $comment </li>"; }
+					?>
+				</ul>		
+			</div>
+		</div>
+	</section>
+	
+	<?php } ?>
 
 <div class="word">
     <span>T</span>
@@ -193,41 +187,6 @@ rel="stylesheet">
     <span>!</span>
     <p>&#128515;</p>
 </div>
-
-<?php if (($_SERVER["REQUEST_METHOD"] == "POST") && (!($formErr))) { ?>
-
-<section id="results" style="background-color: lightsteelblue;">
-		<div class="container py-2" >
-			<div class="row ">
-				<h1>Form Entries:</h1>
-			</div>
-			<div class="row">				
-				<ul>
-					<?php 
-				if ($name !== "") {echo "<li>NAME: $name </li>";}
-				if ($email !== "")	{echo "<li>EMAIL: $email </li>";}
-				if ($contBack !== "")	{echo "<li>CONTACT BACK: $contBack </li>";}
-				if ($comment !== "")	{echo "<li>COMMENT: $comment </li>";}
-					?>
-				</ul>		
-			</div>
-		</div>
-	</section>
-    
-<?php } ?>
-
-
-<?php
-#cleanInputFilter
-function cleanInput ($data){
-$data = trim($data);
-$data = stripslashes($data);
-$data = htmlspecialchars($data);
-return $data;
-}
-
-
-?>
 
 </body>
 
