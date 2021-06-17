@@ -68,7 +68,7 @@ Development. This is my first website! Please click the link below to find out m
     document.getElementById("Greeting").innerHTML = "Hello " + name + "," + " please use the link below to explore my Portfolio"
 </script>
 
-<a href="about.html" class="btn btn-light" id="findoutmore" onclick="myFunction()">Find Out More!</a>
+<a href="http://www.jonathanmierisch.slccwebdev.com/PHP/about.php" class="btn btn-light" id="findoutmore" onclick="myFunction()">Find Out More!</a>
  <br>
 <br>
 </div>
