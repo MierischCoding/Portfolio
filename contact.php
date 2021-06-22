@@ -31,7 +31,7 @@
 href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
 rel="stylesheet">
 
-  <!--CSS Link(s) Here-->
+  <!--CSS Links Here-->
 
 <link rel="stylesheet" href="http://www.jonathanmierisch.slccwebdev.com/CSS/contact.css">
     <title>Contact Me</title>
