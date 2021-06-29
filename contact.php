@@ -199,6 +199,7 @@ rel="stylesheet">
 	</section>
 	
 	<?php } ?>
+	
 
 <div class="word">
     <span>T</span>
