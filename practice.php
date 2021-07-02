@@ -14,7 +14,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -150,11 +150,39 @@ function newList($array){
 ?>
 
 <?php
-//GitHub example
+
     $hostname = "php-mysql-exercisedb.slccwebdev.com";
     $username = "phpmysqlexercise";
     $password = "mysqlexercise";
     $databasename = "php_mysql_exercisedb";
+
+    try {
+      //Create new PDO Object with connection parameters
+      $conn = new PDO("mysql:host=$hostname;dbname=$databasename",$username, $password);
+      
+      //Set PDO error mode to exception
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+      
+      //Variable containing SQL command
+      $sql = "INSERT INTO jm_sp21_Contacts (name, email, contactBack, comments)
+              VALUES ('John Doe', 'jd@email.com', 'Yes', 'I look forward to hearing from you.');";
+
+      //Execute SQL statement on server
+      $conn->exec($sql);
+
+      //Get the id of the last row added
+      $last_id = $conn->lastInsertId();
+
+      //Send success message to screen
+      echo "A new record was added successfully. The last inserted ID is: " . $last_id;
+
+
+  } catch (PDOException $error) {
+
+      //Return error code if one is created
+      echo "An error occurred: <br>" . $sql . "<br>" . $error->getMessage();
+  }
+
 
     try {
         //Create new PDO Object with connection parameters
@@ -164,7 +192,7 @@ function newList($array){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
         //Variable containing SQL command
-        $sql = "SELECT * FROM jd_sp21_Contacts;";        
+        $sql = "SELECT * FROM jm_sp21_Contacts;";        
 
         //Execute SQL statement on server
         $return = $conn->query($sql);
