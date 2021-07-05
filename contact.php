@@ -1,3 +1,132 @@
+<?php 
+		if (!isset($_SESSION['KEY'])){
+			session_start();
+		}
+
+		$nameErr = $emailErr = $contBackErr = "";
+		$name = $email = $contBack = $comment = "";
+		$formErr = false;
+
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			
+			if (empty($_POST["name"])) {
+				$nameErr = "Name is required.";
+				$formErr = true;
+			} else {
+				$name = cleanInput($_POST["name"]);
+				//Use REGEX to accept only letters and white spaces
+				if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+					$nameErr = "Only letters and standard spaces allowed.";
+					$formErr = true;
+				}
+			}
+			
+			if (empty($_POST["email"])) {
+				$emailErr = "Email is required.";
+				$formErr = true;
+			} else {
+				$email = cleanInput($_POST["email"]);
+				// Check if e-mail address is formatted correctly
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					$emailErr = "Please enter a valid email address.";
+					$formErr = true;
+				}
+			}
+			
+			if (empty($_POST["contact-back"])) {
+				$contBackErr = "Please let us know if we can contact you back.";
+				$formErr = true;
+			} else {
+				$contBack = cleanInput($_POST["contact-back"]);
+			}
+			
+			$comment = cleanInput($_POST["comments"]);
+		}
+
+		function cleanInput($data) {
+			$data = trim($data);
+			$data = stripslashes($data);
+			$data = htmlspecialchars($data);
+			return $data;
+		}
+
+		if (($_SERVER["REQUEST_METHOD"] == "POST") && (!($formErr))) {  
+
+			//table name: jm_sp21_Contacts
+			$hostname = "php-mysql-exercisedb.slccwebdev.com";
+			$username = "phpmysqlexercise";
+			$password = "mysqlexercise";
+			$databasename = "php_mysql_exercisedb";
+		
+			try {
+			  //Create new PDO Object with connection parameters
+			  $conn = new PDO("mysql:host=$hostname;dbname=$databasename",$username, $password);
+			  
+			  //Set PDO error mode to exception
+			  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+			  
+				//Variable containing SQL command with placeholders
+				$sql = "INSERT INTO jm_sp21_Contacts (name, email, contactBack, comments)
+						VALUES (:name, :email, :contactBack, :comments);";
+		
+				//Create prepared statement
+				$stmt = $conn->prepare($sql);
+		
+			  //Bind parameters to variables
+			  $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+			  $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+			  $stmt->bindParam(':contactBack', $contBack, PDO::PARAM_STR);
+			  $stmt->bindParam(':comments', $comments, PDO::PARAM_STR);
+		
+			   //Execute SQL statement on server
+				$stmt->execute();
+
+				//Create thank you message
+				$_SESSION['message'] = '<p class="gont-weight-bold>Thank you for your submission!</p>
+				<p class="font-weight-light">Your request has been sent.</p>';
+				
+				$_SESSION['complete'] = true;
+			
+			//Redirect
+			header('Location: ' . $_SERVER['REQUEST_URI']);
+			exit;
+
+		  } catch (PDOException $error) {
+			$_SESSION['message'] = '<p>We apolgize, the form was not submitted successfully. Please try again later</p>';
+
+			$_SESSION['complete'] = true;
+
+			//Redirect
+			header('Location: ' . $_SERVER['REQUEST_URI']);
+			exit;
+		  }
+		
+			try {
+				//Create new PDO Object with connection parameters
+				$conn = new PDO("mysql:host=$hostname;dbname=$databasename",$username, $password);
+				
+				//Set PDO error mode to exception
+				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+				
+				//Variable containing SQL command
+				$sql = "SELECT * FROM jm_sp21_Contacts;";        
+		
+				//Execute SQL statement on server
+				$return = $conn->query($sql);
+		
+		
+			} catch (PDOException $error) {
+		
+				//Return error code if one is created
+				echo "Execution error: <br>" . $sql . "<br>" . $error->getMessage();
+			}
+		
+			$conn = null;
+
+
+		} 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +138,11 @@
     crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--JQuery Links-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -64,56 +192,6 @@ rel="stylesheet">
         </nav>
      <!--Nav Bar End-->
 </header>
-
-<?php
-		$nameErr = $emailErr = $contBackErr = "";
-		$name = $email = $contBack = $comment = "";
-		$formErr = false;
-
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			
-			if (empty($_POST["name"])) {
-				$nameErr = "Name is required.";
-				$formErr = true;
-			} else {
-				$name = cleanInput($_POST["name"]);
-				//Use REGEX to accept only letters and white spaces
-				if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-					$nameErr = "Only letters and standard spaces allowed.";
-					$formErr = true;
-				}
-			}
-			
-			if (empty($_POST["email"])) {
-				$emailErr = "Email is required.";
-				$formErr = true;
-			} else {
-				$email = cleanInput($_POST["email"]);
-				// Check if e-mail address is formatted correctly
-				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					$emailErr = "Please enter a valid email address.";
-					$formErr = true;
-				}
-			}
-			
-			if (empty($_POST["contact-back"])) {
-				$contBackErr = "Please let us know if we can contact you back.";
-				$formErr = true;
-			} else {
-				$contBack = cleanInput($_POST["contact-back"]);
-			}
-			
-			$comment = cleanInput($_POST["comments"]);
-		}
-
-		function cleanInput($data) {
-			$data = trim($data);
-			$data = stripslashes($data);
-			$data = htmlspecialchars($data);
-			return $data;
-		}
-	?>
-
 	<!-- Contact Form Section -->
 	<section id="contact">
 		<div class="container py-5">
@@ -176,31 +254,37 @@ rel="stylesheet">
 				</div>
 			</div>
 		</div>
-	</section>
-	
-	<?php if (($_SERVER["REQUEST_METHOD"] == "POST") && (!($formErr))) { ?>
-	
-	<section id="results" style="background-color: lightsteelblue;">
-		<div class="container py-2" >
-			<div class="row ">
-				<h1>Form Entries:</h1>
-			</div>
-			<div class="row">				
-				<ul>
-					<?php
-					if ($name !== "") { echo "<li>NAME: $name </li>"; } 
-					if ($email !== "") { echo "<li>EMAIL: $email </li>"; }
-					if ($contBack !== "") { echo "<li>CONTACT BACK: $contBack </li>"; }
-					if ($comment !== "") { echo "<li>COMMENT: $comment </li>"; }
-					?>
-				</ul>		
-			</div>
-		</div>
-	</section>
-	
-	<?php } ?>
-	
 
+<!-- Modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="thankYouModalLabel">Thank You</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<?php echo $_SESSION['message']; ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+	</section>
+
+	<!--Show Modal-->
+	<?php
+		if(isset($_SESSION['complete']) && $_SESSION['complete'])  {
+		echo "<script>$('#thankYouModal').modal('show');</script>";	
+		session_unset();
+
+		}
+	?>
+	
 <div class="word">
     <span>T</span>
     <span>H</span>

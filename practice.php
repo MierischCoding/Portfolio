@@ -150,11 +150,17 @@ function newList($array){
 ?>
 
 <?php
-
+//table name: jm_sp21_Contacts
     $hostname = "php-mysql-exercisedb.slccwebdev.com";
     $username = "phpmysqlexercise";
     $password = "mysqlexercise";
     $databasename = "php_mysql_exercisedb";
+
+        //Variables for Development
+        $name = "John Doe";
+        $email = "jd@email.com";
+        $contactBack = "Yes";
+        $comments = "I look forward to hearing from you.";
 
     try {
       //Create new PDO Object with connection parameters
@@ -163,13 +169,22 @@ function newList($array){
       //Set PDO error mode to exception
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
       
-      //Variable containing SQL command
-      $sql = "INSERT INTO jm_sp21_Contacts (name, email, contactBack, comments)
-              VALUES ('John Doe', 'jd@email.com', 'Yes', 'I look forward to hearing from you.');";
+        //Variable containing SQL command with placeholders
+        $sql = "INSERT INTO jm_sp21_Contacts (name, email, contactBack, comments)
+                VALUES (:name, :email, :contactBack, :comments);";
 
-      //Execute SQL statement on server
-      $conn->exec($sql);
+        //Create prepared statement
+        $stmt = $conn->prepare($sql);
 
+      //Bind parameters to variables
+      $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+      $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+      $stmt->bindParam(':contactBack', $contactBack, PDO::PARAM_STR);
+      $stmt->bindParam(':comments', $comments, PDO::PARAM_STR);
+
+       //Execute SQL statement on server
+        $stmt->execute();
+        
       //Get the id of the last row added
       $last_id = $conn->lastInsertId();
 
@@ -215,10 +230,6 @@ function newList($array){
     }
 
     $conn = null;
-
-    echo "<br> <br>";
-    echo "<hr>";
-    echo "<br>";
 ?>
 
 </body>

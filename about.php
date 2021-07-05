@@ -65,7 +65,6 @@ type="text/css">
                 <p>|</p>
                 <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/contact.php" title="ContactMe"class="nav-link">Contact Me</a></li>
                 <p>|</p>
-                <li class="navbar-item"><a href="http://www.jonathanmierisch.slccwebdev.com/PHP/practice.php" title="PHP"class="nav-link">PHP Practice Page</a></li>
             </div>
             </ul>
         </nav>
